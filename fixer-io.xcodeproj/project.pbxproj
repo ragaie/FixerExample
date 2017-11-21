@@ -8,20 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		81BF94B11FC43BF40035CB6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BF94B01FC43BF40035CB6B /* AppDelegate.swift */; };
-		81BF94B31FC43BF40035CB6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BF94B21FC43BF40035CB6B /* ViewController.swift */; };
+		81BF94B31FC43BF40035CB6B /* fixerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BF94B21FC43BF40035CB6B /* fixerView.swift */; };
 		81BF94B61FC43BF40035CB6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81BF94B41FC43BF40035CB6B /* Main.storyboard */; };
 		81BF94B81FC43BF40035CB6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81BF94B71FC43BF40035CB6B /* Assets.xcassets */; };
 		81BF94BB1FC43BF40035CB6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81BF94B91FC43BF40035CB6B /* LaunchScreen.storyboard */; };
+		81BF94C31FC44AD00035CB6B /* fixerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BF94C21FC44AD00035CB6B /* fixerController.swift */; };
+		81BF94C51FC44ADF0035CB6B /* fixerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BF94C41FC44ADF0035CB6B /* fixerModel.swift */; };
+		81BF94CB1FC450670035CB6B /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BF94CA1FC450670035CB6B /* Currency.swift */; };
+		81BF94CE1FC4569B0035CB6B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81BF94CD1FC456940035CB6B /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		81BF94AD1FC43BF40035CB6B /* fixer-io.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fixer-io.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81BF94B01FC43BF40035CB6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		81BF94B21FC43BF40035CB6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		81BF94B21FC43BF40035CB6B /* fixerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fixerView.swift; sourceTree = "<group>"; };
 		81BF94B51FC43BF40035CB6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81BF94B71FC43BF40035CB6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81BF94BA1FC43BF40035CB6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		81BF94BC1FC43BF40035CB6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81BF94C21FC44AD00035CB6B /* fixerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fixerController.swift; sourceTree = "<group>"; };
+		81BF94C41FC44ADF0035CB6B /* fixerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fixerModel.swift; sourceTree = "<group>"; };
+		81BF94CA1FC450670035CB6B /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		81BF94CD1FC456940035CB6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +61,49 @@
 		81BF94AF1FC43BF40035CB6B /* fixer-io */ = {
 			isa = PBXGroup;
 			children = (
-				81BF94B01FC43BF40035CB6B /* AppDelegate.swift */,
-				81BF94B21FC43BF40035CB6B /* ViewController.swift */,
-				81BF94B41FC43BF40035CB6B /* Main.storyboard */,
-				81BF94B71FC43BF40035CB6B /* Assets.xcassets */,
-				81BF94B91FC43BF40035CB6B /* LaunchScreen.storyboard */,
-				81BF94BC1FC43BF40035CB6B /* Info.plist */,
+				81BF94CD1FC456940035CB6B /* Info.plist */,
+				81BF94C91FC44B180035CB6B /* storyboard */,
+				81BF94C81FC44B0A0035CB6B /* support files */,
+				81BF94C71FC44B010035CB6B /* imges */,
+				81BF94C61FC44AEA0035CB6B /* first view  */,
+				81BF94CA1FC450670035CB6B /* Currency.swift */,
 			);
 			path = "fixer-io";
+			sourceTree = "<group>";
+		};
+		81BF94C61FC44AEA0035CB6B /* first view  */ = {
+			isa = PBXGroup;
+			children = (
+				81BF94B21FC43BF40035CB6B /* fixerView.swift */,
+				81BF94C21FC44AD00035CB6B /* fixerController.swift */,
+				81BF94C41FC44ADF0035CB6B /* fixerModel.swift */,
+			);
+			path = "first view ";
+			sourceTree = "<group>";
+		};
+		81BF94C71FC44B010035CB6B /* imges */ = {
+			isa = PBXGroup;
+			children = (
+				81BF94B71FC43BF40035CB6B /* Assets.xcassets */,
+			);
+			path = imges;
+			sourceTree = "<group>";
+		};
+		81BF94C81FC44B0A0035CB6B /* support files */ = {
+			isa = PBXGroup;
+			children = (
+				81BF94B01FC43BF40035CB6B /* AppDelegate.swift */,
+			);
+			path = "support files";
+			sourceTree = "<group>";
+		};
+		81BF94C91FC44B180035CB6B /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				81BF94B91FC43BF40035CB6B /* LaunchScreen.storyboard */,
+				81BF94B41FC43BF40035CB6B /* Main.storyboard */,
+			);
+			path = storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +165,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81BF94CE1FC4569B0035CB6B /* Info.plist in Resources */,
 				81BF94BB1FC43BF40035CB6B /* LaunchScreen.storyboard in Resources */,
 				81BF94B81FC43BF40035CB6B /* Assets.xcassets in Resources */,
 				81BF94B61FC43BF40035CB6B /* Main.storyboard in Resources */,
@@ -136,7 +179,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81BF94B31FC43BF40035CB6B /* ViewController.swift in Sources */,
+				81BF94B31FC43BF40035CB6B /* fixerView.swift in Sources */,
+				81BF94CB1FC450670035CB6B /* Currency.swift in Sources */,
+				81BF94C31FC44AD00035CB6B /* fixerController.swift in Sources */,
+				81BF94C51FC44ADF0035CB6B /* fixerModel.swift in Sources */,
 				81BF94B11FC43BF40035CB6B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,7 +321,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RKVSSJM9UR;
 				INFOPLIST_FILE = "fixer-io/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Chtar.fixer-io";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -289,7 +337,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RKVSSJM9UR;
 				INFOPLIST_FILE = "fixer-io/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Chtar.fixer-io";
 				PRODUCT_NAME = "$(TARGET_NAME)";
