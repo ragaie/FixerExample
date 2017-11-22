@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import Firebase
+import FirebaseDatabase
 class fixerController: NSObject,UIPickerViewDelegate,UIPickerViewDataSource {
  
     
@@ -19,13 +20,16 @@ class fixerController: NSObject,UIPickerViewDelegate,UIPickerViewDataSource {
     
     var fromIndex : Int! = 0
     var toIndex : Int! = 0
-
+    var ref: DatabaseReference!
+    
+    
     override init() {
         
         super.init()
         
         myModel = fixerModel()
         
+        ref = Database.database().reference()
         
       //  myModel.addObserver(self, forKeyPath:  #keyPath(fixerModel.flage), options: [.new, .old], context: &observerContext)
            myModel.addObserver(self, forKeyPath:  "flage", options: .new, context: &observerContext)
@@ -100,12 +104,6 @@ class fixerController: NSObject,UIPickerViewDelegate,UIPickerViewDataSource {
     
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        
-        
-        
-      
-        
         if pickerView.tag == 0 {
             fromIndex = row
             
@@ -116,13 +114,8 @@ class fixerController: NSObject,UIPickerViewDelegate,UIPickerViewDataSource {
             myView.totextLabel.text = myModel.tempFixorObject.allRate [row].name
 
         }
-            
-            var fromValue = ( myView.enterText.text! as! NSString).doubleValue
-              var valueOfCurr = myModel.tempFixorObject.allRate [toIndex].value
-     
-            myView.resultLabel.text = String(fromValue * valueOfCurr!)
-
-        
+   
+        calculteValue()
         if fromIndex == toIndex {
             
             myView.enterText.text = "1"
@@ -131,22 +124,71 @@ class fixerController: NSObject,UIPickerViewDelegate,UIPickerViewDataSource {
         }
     }
     
+  
+
     
   @objc   func textFieldDidChange(_ sender: UITextField) {
-  var fromValue : Double! = 0.0
-   if myView.enterText.text != ""
-    {
-        
-        fromValue = ( myView.enterText.text! as! NSString).doubleValue
-        
+
+            calculteValue()
+
     }
     
     
     
+    func calculteValue(){
+        myView.saveToDataBase.isEnabled = true
+        var fromValue : Double! = 0.0
+        if myView.enterText.text != ""
+        {
+            fromValue = ( myView.enterText.text! as! NSString).doubleValue
+        }
         var valueOfCurr = myModel.tempFixorObject.allRate [toIndex].value
+        var valueOfFromCurrency = myModel.tempFixorObject.allRate [fromIndex].value
+        myView.resultLabel.text = String(fromValue * (valueOfCurr! / valueOfFromCurrency!) )
         
-        myView.resultLabel.text = String(fromValue! * valueOfCurr!)
+    }
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    func signOut(){
+         let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            UserDefaults.standard.removeObject(forKey: "email")
+            UserDefaults.standard.removeObject(forKey: "password")
+            let nextViewController = self.myView.storyboard?.instantiateViewController(withIdentifier: "firstScreenSign")
+            self.myView.navigationController?.present(nextViewController!, animated: true, completion: nil)
+       
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
+        
     }
     
+    
+    
+  @objc   func SaveToDataBase(_ button:UIBarButtonItem!){
+
+    var tempDate : String! =  Date().description
+    let post  = [ "date":tempDate , "from": myModel.tempFixorObject.allRate[fromIndex].name,"to": myModel.tempFixorObject.allRate[toIndex].name,"from_Count": myView.enterText.text,"to_Count":myView.resultLabel.text]
+        ref.child("UserRecord").child((Auth.auth().currentUser?.uid)!).childByAutoId().setValue(post)
+    
+    myView.saveToDataBase.isEnabled = false
+
+    UIAlertView.init(title: "Alert", message: "Record it is saved", delegate: nil, cancelButtonTitle: "Dismiss").show()
+   
+    
+        
+    }
+    
+
     
 }

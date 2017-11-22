@@ -35,16 +35,13 @@ class fixerModel: NSObject {
         let task = session.dataTask(with: urlRequest as URLRequest) {
             (data, response, error) -> Void in
             
+            
             let httpResponse = response as! HTTPURLResponse
             let statusCode = httpResponse.statusCode
-            
             if (statusCode == 200) {
-            
                 if data != nil{
-                    
                     do {
                         var   dictonary =  try JSONSerialization.jsonObject(with: data!, options: []) as! [String:AnyObject]
-                    
                             DispatchQueue.main.async { [unowned self] in
                                 self.tempFixorObject.setObject(dictonary)
                                 self.flage = "dataDone"
@@ -52,7 +49,6 @@ class fixerModel: NSObject {
                     } catch let error as NSError {
                         print(error)
                     }
-                   
                 }
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
 

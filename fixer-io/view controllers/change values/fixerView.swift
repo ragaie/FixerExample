@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import Firebase
+import FirebaseDatabase
 class fixerView: UIViewController {
 
     
@@ -30,6 +31,7 @@ class fixerView: UIViewController {
     @IBOutlet weak var totextLabel: UILabel!
     
     
+    @IBOutlet weak var saveToDataBase: UIBarButtonItem!
     
     var myController : fixerController!
     override func viewDidLoad() {
@@ -47,6 +49,10 @@ class fixerView: UIViewController {
         
         enterText.addTarget(myController, action: #selector(fixerController.textFieldDidChange(_:)), for: .editingChanged)
         
+        saveToDataBase.target = myController
+
+        saveToDataBase.action = #selector(fixerController.SaveToDataBase(_:))
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -55,7 +61,46 @@ class fixerView: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    
+    @IBAction func logoutAction(_ sender: Any) {
+        
+        
+     myController.signOut()
+        //firstScreenSign
+    }
+    
+    
+    @IBAction func getAllData(_ sender: Any) {
+        
+        
+        
+        //listViewId
+        
+        let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "listViewId")
+        self.navigationController?.pushViewController(nextViewController!, animated: true)
+        
+        
+//        var ref: DatabaseReference!
+//        ref = Database.database().reference()
+//
+//        let userID = Auth.auth().currentUser?.uid
+//        ref.child("UserRecord").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+//            // Get user value
+//            let value = snapshot.value as? NSDictionary
+//
+//
+//            print(value)
+//            // ...
+//        }) { (error) in
+//            print(error.localizedDescription)
+//        }
+        
+    }
+    
+    
 
 }
+
 
 
